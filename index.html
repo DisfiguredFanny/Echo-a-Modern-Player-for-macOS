@@ -287,150 +287,74 @@
       font-size: 1.02rem;
     }
 
-    /* Complete Gallery Grid (ALL 12 Screenshots) */
+    /* Clean Basic Screenshot Gallery */
     .gallery-section {
-      margin-bottom: 100px;
+      margin-bottom: 90px;
     }
 
-    .gallery-filter {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
+    .gallery-header {
+      text-align: center;
       margin-bottom: 36px;
     }
 
-    .filter-btn {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 7px 16px;
-      border-radius: 999px;
-      font-family: inherit;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .filter-btn:hover {
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--text);
-    }
-
-    .filter-btn.active {
-      background: var(--text);
-      color: #0c0d14;
-      border-color: var(--text);
+    .gallery-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+      align-items: center;
     }
 
     .gallery-item {
       background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      overflow: hidden;
+      padding: 16px;
       display: flex;
-      flex-direction: column;
-      transition: all 0.25s ease;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
       cursor: pointer;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
     }
 
     .gallery-item:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.22);
+      background: var(--bg-surface-hover);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
     }
 
-    .gallery-img-wrap {
-      background: radial-gradient(circle at 50% 20%, rgba(35, 40, 58, 0.5), rgba(12, 14, 22, 0.8));
-      padding: 24px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 290px;
-    }
-
-    .gallery-img {
+    .gallery-item img {
       max-width: 100%;
-      max-height: 250px;
       height: auto;
-      border-radius: 10px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
-      transition: transform 0.25s ease;
+      max-height: 380px;
+      object-fit: contain;
+      border-radius: 12px;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.4));
+      display: block;
     }
 
-    .gallery-item:hover .gallery-img {
-      transform: scale(1.03);
-    }
-
-    .gallery-caption {
-      padding: 16px;
-      border-top: 1px solid var(--border);
-      background: rgba(12, 14, 22, 0.4);
-    }
-
-    .gallery-item-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    
-    .gallery-tag.tag-dark {
-      background: rgba(30, 30, 35, 0.9);
-      color: #70b4ff;
-      border: 1px solid rgba(112, 180, 255, 0.3);
-    }
-    .gallery-tag.tag-light {
-      background: rgba(240, 240, 245, 0.9);
-      color: #0066cc;
-      border: 1px solid rgba(0, 102, 204, 0.3);
-    }
-    .gallery-tag.tag-warm {
-      background: rgba(232, 226, 208, 0.9);
-      color: #5c6b34;
-      border: 1px solid rgba(92, 107, 52, 0.35);
-    }
-
-    .gallery-tag {
-      font-size: 0.72rem;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .gallery-item-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
-
-    /* Modal / Lightbox for viewing full screenshots */
+    /* Modal / Lightbox */
     .lightbox {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(12px);
-      z-index: 2000;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 9999;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 24px;
+      cursor: zoom-out;
     }
 
     .lightbox.active {
@@ -438,46 +362,48 @@
     }
 
     .lightbox-content {
-      max-width: 90vw;
-      max-height: 90vh;
+      position: relative;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      max-width: 95vw;
+      max-height: 92vh;
+      cursor: default;
     }
 
-    .lightbox-img {
-      max-width: 90vw;
-      max-height: 82vh;
+    .lightbox-img, #lightbox-img {
+      display: block;
+      max-width: 92vw;
+      max-height: 85vh;
       object-fit: contain;
-      border-radius: 18px;
-      box-shadow: 0 28px 80px rgba(0,0,0,0.95);
-      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 16px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       image-rendering: -webkit-optimize-contrast;
-      transition: width 0.15s ease, height 0.15s ease;
+      transition: width 0.12s ease, height 0.12s ease;
     }
 
     .lightbox-close {
       position: absolute;
       top: 24px;
       right: 28px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
-      font-size: 1.5rem;
-      width: 42px;
-      height: 42px;
+      font-size: 26px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.2s;
+      z-index: 10001;
     }
 
-    .lightbox-title {
-      margin-top: 14px;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 1.05rem;
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.25);
     }
 
     /* Features Grid */
@@ -724,233 +650,54 @@
     <!-- ALL 12 SCREENSHOTS GALLERY -->
     <section id="screenshots" class="gallery-section">
     <div class="gallery-header">
-      <span class="gallery-badge">VISUAL TOUR</span>
-      <h2 class="gallery-title">Every Detail, Refined</h2>
-      <p class="gallery-subtitle">
-        Explore Echo across Dark Mode, Light Mode, and Warm Ivory themes — with responsive slide-out drawers, live audio visualizers, and compact desktop modes.
-      </p>
-      <div class="gallery-filter">
-        <button class="filter-btn active" onclick="filterGallery('all')">All Views (15)</button>
-        <button class="filter-btn" onclick="filterGallery('dark')">Dark Mode (6)</button>
-        <button class="filter-btn" onclick="filterGallery('light')">Light Mode (4)</button>
-        <button class="filter-btn" onclick="filterGallery('warm')">Warm Ivory (5)</button>
-        <button class="filter-btn" onclick="filterGallery('compact')">Compact Mini</button>
-        <button class="filter-btn" onclick="filterGallery('eq-lyrics')">EQ & Lyrics</button>
-      </div>
+      <h2 class="gallery-title">Screenshots</h2>
     </div>
 
     <div class="gallery-grid">
-      <!-- ====== DARK MODE (6) ====== -->
-      <!-- 1. Dark Mode Player with Oscilloscope -->
-      <div class="gallery-item" data-mode="dark" data-category="player" onclick="openLightbox('screenshots/dark-player-oscilloscope.png', 'Echo Player with Oscilloscope — Dark Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/dark-player-oscilloscope.png" alt="Echo player with blue oscilloscope in Dark Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Oscilloscope Visualizer</span>
-            <span class="gallery-tag tag-dark">Dark Mode</span>
-          </div>
-          <p class="gallery-item-desc">Glowing real-time dual-waveform oscilloscope display on deep charcoal canvas.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-01.png')">
+        <img src="screenshots/gallery-01.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 2. Dark Mode 10-Band Equalizer -->
-      <div class="gallery-item" data-mode="dark" data-category="eq-lyrics" onclick="openLightbox('screenshots/dark-equalizer.png', '10-Band Equalizer Popover — Dark Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/dark-equalizer.png" alt="Echo 10-band equalizer popover in Dark Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>10-Band Equalizer</span>
-            <span class="gallery-tag tag-dark">Dark Mode</span>
-          </div>
-          <p class="gallery-item-desc">Precision octave-spaced peaking bands, Flat curve preset, and peak limiter.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-02.png')">
+        <img src="screenshots/gallery-02.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 3. Dark Mode Synced Lyrics Drawer -->
-      <div class="gallery-item" data-mode="dark" data-category="eq-lyrics" onclick="openLightbox('screenshots/dark-lyrics.png', 'Synchronized Karaoke Lyrics Drawer — Dark Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/dark-lyrics.png" alt="Echo synchronized lyrics drawer in Dark Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Synchronized Lyrics</span>
-            <span class="gallery-tag tag-dark">Dark Mode</span>
-          </div>
-          <p class="gallery-item-desc">Karaoke-style line-by-line synchronized tracking over deep dark glass drawer.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-03.png')">
+        <img src="screenshots/gallery-03.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 4. Dark Mode Settings Drawer -->
-      <div class="gallery-item" data-mode="dark" data-category="settings" onclick="openLightbox('screenshots/dark-settings.png', 'Preferences Drawer — Dark Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/dark-settings.png" alt="Echo preferences drawer in Dark Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Preferences Drawer</span>
-            <span class="gallery-tag tag-dark">Dark Mode</span>
-          </div>
-          <p class="gallery-item-desc">Audio ducking toggles, AirPlay device selector, and 12s crossfade duration.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-04.png')">
+        <img src="screenshots/gallery-04.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 5. Dark Mode Library Drawer -->
-      <div class="gallery-item" data-mode="dark" data-category="library" onclick="openLightbox('screenshots/dark-library.png', 'Library Drawer & Album Artwork — Dark Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/dark-library.png" alt="Echo library drawer in Dark Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Library Drawer</span>
-            <span class="gallery-tag tag-dark">Dark Mode</span>
-          </div>
-          <p class="gallery-item-desc">Native NSTableView virtual list with instant filtering across 7,800+ songs.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-05.png')">
+        <img src="screenshots/gallery-05.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 6. Dark Mode Compact Player -->
-      <div class="gallery-item" data-mode="dark" data-category="compact" onclick="openLightbox('screenshots/dark-compact.png', 'Compact Mini Player — Dark Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/dark-compact.png" alt="Echo compact mini player in Dark Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Compact Mini Player</span>
-            <span class="gallery-tag tag-dark">Dark Mode</span>
-          </div>
-          <p class="gallery-item-desc">Space-saving 316 pt desktop footprint with essential playback controls.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-06.png')">
+        <img src="screenshots/gallery-06.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- ====== LIGHT MODE (4) ====== -->
-      <!-- 7. Light Mode Player with Oscilloscope -->
-      <div class="gallery-item" data-mode="light" data-category="player" onclick="openLightbox('screenshots/light-player-oscilloscope.png', 'Echo Player with Oscilloscope — Light Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/light-player-oscilloscope.png" alt="Echo player with oscilloscope in native Light Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Oscilloscope Visualizer</span>
-            <span class="gallery-tag tag-light">Light Mode</span>
-          </div>
-          <p class="gallery-item-desc">Clean platinum macOS styling with electric blue dual-wave visualizer.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-07.png')">
+        <img src="screenshots/gallery-07.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 8. Light Mode Library & Artwork -->
-      <div class="gallery-item" data-mode="light" data-category="library" onclick="openLightbox('screenshots/light-library-artwork.png', 'Album Artwork & Library Drawer — Light Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/light-library-artwork.png" alt="Echo album art with library drawer in Light Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Art & Library Drawer</span>
-            <span class="gallery-tag tag-light">Light Mode</span>
-          </div>
-          <p class="gallery-item-desc">High-resolution album cover display with slide-out music catalog search.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-08.png')">
+        <img src="screenshots/gallery-08.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 9. Light Mode Library & Oscilloscope -->
-      <div class="gallery-item" data-mode="light" data-category="library" onclick="openLightbox('screenshots/light-library-oscilloscope.png', 'Oscilloscope & Library Drawer — Light Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/light-library-oscilloscope.png" alt="Echo oscilloscope and library drawer in Light Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Oscilloscope & Library</span>
-            <span class="gallery-tag tag-light">Light Mode</span>
-          </div>
-          <p class="gallery-item-desc">Simultaneous live waveform visualizer and high-speed library table view.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-09.png')">
+        <img src="screenshots/gallery-09.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 10. Light Mode Compact Player -->
-      <div class="gallery-item" data-mode="light" data-category="compact" onclick="openLightbox('screenshots/light-compact.png', 'Compact Mini Player — Light Mode')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/light-compact.png" alt="Echo compact player in Light Mode" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Compact Mini Player</span>
-            <span class="gallery-tag tag-light">Light Mode</span>
-          </div>
-          <p class="gallery-item-desc">Clean macOS light appearance for unobtrusive desk playback.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-10.png')">
+        <img src="screenshots/gallery-10.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- ====== WARM IVORY THEME (5) ====== -->
-      <!-- 11. Warm Ivory Player with Oscilloscope -->
-      <div class="gallery-item" data-mode="warm" data-category="player" onclick="openLightbox('screenshots/warm-player-oscilloscope.png', 'Echo Player with Oscilloscope — Warm Ivory Theme')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/warm-player-oscilloscope.png" alt="Echo player in warm ivory theme with olive green oscilloscope" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Warm Ivory Player</span>
-            <span class="gallery-tag tag-warm">Warm Ivory</span>
-          </div>
-          <p class="gallery-item-desc">Warm cream aesthetics paired with an olive green oscilloscope visualizer.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-11.png')">
+        <img src="screenshots/gallery-11.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 12. Warm Ivory Synced Lyrics Drawer -->
-      <div class="gallery-item" data-mode="warm" data-category="eq-lyrics" onclick="openLightbox('screenshots/warm-lyrics.png', 'Synced Karaoke Lyrics Drawer — Warm Ivory Theme')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/warm-lyrics.png" alt="Echo synced lyrics drawer in Warm Ivory Theme" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Synced Lyrics</span>
-            <span class="gallery-tag tag-warm">Warm Ivory</span>
-          </div>
-          <p class="gallery-item-desc">Active line highlight tracking rendered on warm organic paper backdrop.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-12.png')">
+        <img src="screenshots/gallery-12.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 13. Warm Ivory Settings Drawer -->
-      <div class="gallery-item" data-mode="warm" data-category="settings" onclick="openLightbox('screenshots/warm-settings.png', 'Preferences Drawer — Warm Ivory Theme')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/warm-settings.png" alt="Echo settings drawer in Warm Ivory Theme" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Preferences Drawer</span>
-            <span class="gallery-tag tag-warm">Warm Ivory</span>
-          </div>
-          <p class="gallery-item-desc">Full audio customization and theme switching on warm muted canvas.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-13.png')">
+        <img src="screenshots/gallery-13.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 14. Warm Ivory Library Drawer -->
-      <div class="gallery-item" data-mode="warm" data-category="library" onclick="openLightbox('screenshots/warm-library.png', 'Library Drawer — Warm Ivory Theme')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/warm-library.png" alt="Echo library drawer in Warm Ivory Theme" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Library Drawer</span>
-            <span class="gallery-tag tag-warm">Warm Ivory</span>
-          </div>
-          <p class="gallery-item-desc">High-speed virtual table scrolling with active track indicators.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-14.png')">
+        <img src="screenshots/gallery-14.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
-
-      <!-- 15. Warm Ivory Compact Player -->
-      <div class="gallery-item" data-mode="warm" data-category="compact" onclick="openLightbox('screenshots/warm-compact.png', 'Compact Mini Player — Warm Ivory Theme')">
-        <div class="gallery-img-wrap">
-          <img src="screenshots/warm-compact.png" alt="Echo compact mini player in Warm Ivory Theme" class="gallery-img">
-        </div>
-        <div class="gallery-caption">
-          <div class="gallery-item-title">
-            <span>Compact Mini Player</span>
-            <span class="gallery-tag tag-warm">Warm Ivory</span>
-          </div>
-          <p class="gallery-item-desc">Minimalist 316 pt mini player in soothing warm tones.</p>
-        </div>
+      <div class="gallery-item" onclick="openLightbox('screenshots/gallery-15.png')">
+        <img src="screenshots/gallery-15.png" alt="Echo macOS Screenshot" loading="lazy">
       </div>
     </div>
   </section>
@@ -1107,37 +854,26 @@
     </div>
   </footer>
 
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightboxDirect()">&times;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Enlarged Screenshot">
+    </div>
+  </div>
+
   <script>
-    function filterGallery(filter) {
-      document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
-      if (window.event && window.event.target) {
-        window.event.target.classList.add("active");
-      }
-
-      document.querySelectorAll(".gallery-item").forEach(item => {
-        const mode = item.getAttribute("data-mode");
-        const cat = item.getAttribute("data-category");
-        if (filter === "all" || mode === filter || cat === filter) {
-          item.style.display = "flex";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    }
-
-    function openLightbox(src, title) {
+    function openLightbox(src) {
       const img = document.getElementById("lightbox-img");
-      document.getElementById("lightbox-title").textContent = title;
 
       function updateSize() {
         const nw = img.naturalWidth || 366;
         const nh = img.naturalHeight || 316;
-        const maxH = window.innerHeight * 0.82;
-        const maxW = window.innerWidth * 0.90;
+        const maxH = window.innerHeight * 0.85;
+        const maxW = window.innerWidth * 0.92;
 
-        // Scale up screenshots (especially compact ones) so they display expansive and clear
-        let targetW = nw * 1.75;
-        let targetH = nh * 1.75;
+        // Auto-scale small & compact screenshots so they enlarge comfortably
+        let targetW = nw * 1.8;
+        let targetH = nh * 1.8;
 
         if (targetH > maxH) {
           const ratio = maxH / targetH;
