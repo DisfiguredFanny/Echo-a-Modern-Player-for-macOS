@@ -21,10 +21,10 @@
 
 :root[data-theme="light"] {
     color-scheme: light;
-    --bg: #f1ebdd;
-    --bg-soft: #e8e0cd;
-    --card: #f8f4ea;
-    --border: rgba(60, 50, 20, 0.12);
+    --bg: #d6d4ce;
+    --bg-soft: #cbc8c1;
+    --card: #e2e0da;
+    --border: rgba(40, 38, 30, 0.14);
     --text: #2b2a22;
     --muted: #6d6a5c;
     --accent: #4d6a26;
