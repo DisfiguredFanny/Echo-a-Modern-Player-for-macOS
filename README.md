@@ -2,4 +2,4 @@
 
 The website for Echo: **https://disfiguredfanny.github.io/Echo-a-Modern-Player-for-macOS/**
 
-Echo is a lightweight menu bar and floating music player for your own music on macOS 15 Sequoia or later.
+Echo is a lightweight menu bar and floating music player for your own music on macOS 14.2 Sonoma or later.
